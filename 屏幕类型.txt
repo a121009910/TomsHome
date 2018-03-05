@@ -1,0 +1,18 @@
+
+	// 移动端
+	@media all and (min-width:320px) and (max-width:970px){ 百分比 }
+
+	// pad端
+	@media all and (min-width:971px) and ( max-width:1200px){ width：970px; }
+
+	// 小型屏幕
+	@media all and (min-width:1001px) and (max-width:1440px){ width:1200px }
+
+	//大型屏幕
+	@media all and (min-width:1441px) and (max-width:1920px){ wdith:1440px }
+
+	// 超大型屏幕 
+	@media all and (min-width:1920px) and { width：1440px }
+
+
+1400-
