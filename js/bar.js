@@ -11,10 +11,10 @@ $('.bar ul li').height($('.bars').height())
 $('.bar').stop().animate({ scrollTop: $('.bar ul li').height()*m },500)
 $('.bar-prev').click(function(){
 	clearInterval(timer);
-	m++;
-	if (m>$('.bar ul li').length-2) {
-		m = 1;
-		$('.bar').scrollTop($('.bar ul li').eq(0).height()*(m-1));
+	m--;
+	if (m<1){
+		m = $('.bar ul li').length-2;
+		$('.bar').scrollTop($('.bar ul li').eq(0).height()*(m+1));
 	}
 	public();
 	run();
@@ -22,10 +22,10 @@ $('.bar-prev').click(function(){
 
 $('.bar-next').click(function(){
 	clearInterval(timer);
-	m--;
-	if (m<1){
-		m = $('.bar ul li').length-2;
-		$('.bar').scrollTop($('.bar ul li').eq(0).height()*(m+1));
+	m++;
+	if (m>$('.bar ul li').length-2) {
+		m = 1;
+		$('.bar').scrollTop($('.bar ul li').eq(0).height()*(m-1));
 	}
 	public();
 	run();
@@ -39,9 +39,20 @@ function run (){
 			$('.bar').scrollTop($('.bar ul li').eq(0).height()*(m-1));
 		}
 		public();
-	},3000)
+	},2000)
 }
 run();
+
+
+$('.num li').click(function  () {
+	clearInterval(timer);
+	var i=$('.num li').index(this);
+	console.log(i+1)
+	m = i+1;
+	n = i;
+	public();
+	run();
+})
 
 function public (){
 	$('.bar').stop().animate({ scrollTop: $('.bar ul li').height()*m },500);
@@ -75,14 +86,14 @@ $('.shop-bar').scrollLeft($('.shop-bar ul li').eq(0).width())
 // 向左滑
 $('.shop-prev').click(function(){
 	clearInterval(timers)
-	a++;
-	if (a> $('.shop-bar ul li').length-2) {
-		a=1;
-		$('.shop-bar').scrollLeft($('.shop-bar ul li').eq(0).width()*(a-1))
+	a--;
+	if (a<0) {
+		a=$('.shop-bar ul li').length-3;	
+		$('.shop-bar').scrollLeft($('.shop-bar ul li').eq(0).width()*(a+1))
 	}
-	b++;
-	if (b> $('.shop-bar ul li').length-2) {
-		b=1;
+	b--;
+	if (b<1) {
+		b=$('.shop-bar ul li').length-2;
 	}
 	shopmover();
 	shoppublic();
@@ -91,14 +102,14 @@ $('.shop-prev').click(function(){
 // 向右滑
 $('.shop-next').click(function(){
 	clearInterval(timers)
-	a--;
-	if (a<0) {
-		a=$('.shop-bar ul li').length-3;
-		$('.shop-bar').scrollLeft($('.shop-bar ul li').eq(0).width()*(a+1))
+	a++;
+	if (a> $('.shop-bar ul li').length-2) {
+		a=1;
+		$('.shop-bar').scrollLeft($('.shop-bar ul li').eq(0).width()*(a-1))
 	}
-	b--;
-	if (b<1) {
-		b=$('.shop-bar ul li').length-2;
+	b++;
+	if (b> $('.shop-bar ul li').length-2) {
+		b=1;
 	}
 	shopmover();
 	shoppublic();
